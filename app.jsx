@@ -22,7 +22,7 @@ class Category extends React.Component {
     render() {
         return (
             <tr align="center">
-                <td><b>{this.props.category}</b></td>
+                <th colSpan="2"><b>{this.props.category}</b></th>
             </tr>
         )
     }
@@ -95,15 +95,16 @@ class Home extends React.Component {
     }
 
     render() {
-        return <div>
-                <input type="text" value={this.state.search} onChange={this.search.bind(this)}/>
+        return <div className="sm-2">
+            <div className="form-group">
+                <input className="form-control" type="text" value={this.state.search} onChange={this.search.bind(this)}/>
+            </div>
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" checked={this.state.onlyStock} onChange={this.onlyInStock.bind(this)}/>
+                <label className="form-check-label">N'afficher que les produits en stock ?</label>
+            </div>
                 <br/>
-                <label>
-                    <input type="checkbox" checked={this.state.onlyStock} onChange={this.onlyInStock.bind(this)}/>
-                    N'afficher que les produits en stock ?
-                </label>
-                <br/>
-                <table>
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Name</th>
